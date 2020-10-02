@@ -9,7 +9,7 @@ export const BookListItem = ({ book }) => {
         <img src={coverImage} alt={`cover for ${title}`} />
       </div>
       <div className="book-details">
-        <a href="#">{title}</a>
+        <span>{title}</span>
         <p className="book-author">{author}</p>
         <p className="book-price">${price}</p>
         <button className="btn btn-info add-to-cart">Add to cart</button>
