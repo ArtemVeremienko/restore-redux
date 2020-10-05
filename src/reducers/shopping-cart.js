@@ -42,10 +42,12 @@ const updateOrder = (state, bookId, quantity) => {
   const itemIndex = cartItems.findIndex(({ id }) => id === bookId)
   const item = cartItems[itemIndex];
   let newItem = updateCartItem(book, item, quantity)
+  const newCartItems = updateCartItems(cartItems, newItem, itemIndex)
+  const newTotal = newCartItems.reduce((sum, { total }) => sum + total, 0).toFixed(2)
 
   return {
-    orderTotal: 0,
-    cartItems: updateCartItems(cartItems, newItem, itemIndex)
+    orderTotal: newTotal,
+    cartItems: newCartItems,
   }
 }
 
@@ -55,7 +57,7 @@ export const updateShoppingCart = (state, action) => {
   if (!state) {
     return {
       cartItems: [],
-      orderTotal: 220,
+      orderTotal: 0,
     }
   }
 
